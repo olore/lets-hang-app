@@ -1,17 +1,17 @@
-import {Page} from 'ionic-angular';
+import {Page, NavController} from 'ionic-angular';
 import {Contacts} from 'ionic-native';
 import DateGrabber from '../../date-grabber/date-grabber-component';
 
 @Page({
-  templateUrl: 'build/pages/page3/page3.html',
+  templateUrl: 'build/pages/createHangPage/create-hang-page.html',
   directives: [DateGrabber]
 })
 
-export class Page3 {
+export class CreateHangPage {
 
   myDate: Date;
 
-  constructor() {
+  constructor(nav: NavController) {
   }
 
   pickContact() {

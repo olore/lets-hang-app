@@ -1,14 +1,26 @@
 import {App, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
+import {RouteConfig} from "angular2/router";
+import {LoginPage} from "./pages/loginPage/login-page";
+import {CreateHangPage} from "./pages/createHangPage/create-hang-page";
 
 
 @App({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {
+    // http://ionicframework.com/docs/v2/api/config/Config/
+    // http://mcgivery.com/understanding-ionic-2-app/
+    pageTransition: 'ios'
+  } 
 })
+
+@RouteConfig([
+  { path: '/', name: 'Root', component: LoginPage },
+  { path: '/hang/create', name: 'HangCreate', component: CreateHangPage }
+])
+
 export class MyApp {
-  rootPage: any = TabsPage;
+  rootPage: any = LoginPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -18,3 +30,4 @@ export class MyApp {
     });
   }
 }
+
