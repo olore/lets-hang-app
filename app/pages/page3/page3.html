@@ -18,10 +18,9 @@
       <ion-input type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>WHEN</ion-label>
-      <ion-input type="text" readonly="readonly" (click)="pickDate()" [value]="getWhenDateForUI()"></ion-input>
-    </ion-item>
+    <date-grabber [thedate]="myDate"
+                  (onDateChanged)="dateWasChanged($event)"
+    ></date-grabber>
 
     <ion-item>
       <ion-label>WHERE</ion-label>

@@ -1,6 +1,5 @@
 import {Injectable} from "angular2/core";
 import {DatePicker} from 'ionic-native';
-import * as moment from 'moment/moment';
 
 
 @Injectable()
