@@ -1,0 +1,8 @@
+.page3 {
+
+  ion-input {
+    input {
+      -webkit-backdrop-filter: none !important; /* why do i need this?? */
+    }
+  }
+}

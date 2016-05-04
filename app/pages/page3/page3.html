@@ -1,0 +1,38 @@
+
+<ion-navbar *navbar>
+  <ion-title>
+    Create
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="page3">
+  <ion-list inset>
+
+    <ion-item>
+      <ion-label>WHO</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>WHAT</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>WHEN</ion-label>
+      <ion-input type="text" readonly="readonly" (click)="pickDate()" [value]="getWhenDateForUI()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>WHERE</ion-label>
+      <ion-input type="url"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button (click)="pickContact()">Pick a Contact</button>
+
+  <div center>
+    <button (click)="save()">Create</button>
+  </div>
+
+</ion-content>
