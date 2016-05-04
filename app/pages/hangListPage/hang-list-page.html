@@ -14,7 +14,7 @@
 
     <ion-item>
       <ion-avatar item-left>
-        <img src="img/avatar-finn.png">
+        <ion-icon name="checkmark-circle"></ion-icon>
       </ion-avatar>
       <h2>Monday 4pm</h2>
       <h3>Hanging with Jada and Olivia</h3>
@@ -23,7 +23,7 @@
 
     <ion-item>
       <ion-avatar item-left>
-        <img src="img/avatar-finn.png">
+        <ion-icon name="checkmark-circle"></ion-icon>
       </ion-avatar>
       <h2>Wednesday 7pm</h2>
       <h3>Hanging with Eric and Joe</h3>
@@ -35,7 +35,6 @@
     </ion-list-header>
     <ion-item>
       <ion-avatar item-left>
-        <img src="img/avatar-finn.png">
       </ion-avatar>
       <h2>Saturday 1pm</h2>
       <h3>Hanging with Mom and Dad</h3>
@@ -45,7 +44,7 @@
   </ion-list>
 
   <div padding>
-    <button block>Create</button>
+    <a button block [routerLink]="['/HangCreate']">New</a>
   </div>
 
 </ion-content>

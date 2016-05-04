@@ -3,6 +3,7 @@ import {StatusBar} from 'ionic-native';
 import {RouteConfig} from "angular2/router";
 import {LoginPage} from "./pages/loginPage/login-page";
 import {CreateHangPage} from "./pages/createHangPage/create-hang-page";
+import {HangListPage} from "./pages/hangListPage/hang-list-page";
 
 
 @App({
@@ -16,7 +17,8 @@ import {CreateHangPage} from "./pages/createHangPage/create-hang-page";
 
 @RouteConfig([
   { path: '/', name: 'Root', component: LoginPage },
-  { path: '/hang/create', name: 'HangCreate', component: CreateHangPage }
+  { path: '/hang/create', name: 'HangCreate', component: CreateHangPage },
+  { path: '/hang/list', name: 'HangList', component: HangListPage }
 ])
 
 export class MyApp {

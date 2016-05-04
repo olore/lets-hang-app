@@ -1,4 +1,5 @@
 <ion-navbar *navbar>
+  <ion-title>Create a new Hang</ion-title>
 </ion-navbar>
 
 <ion-content class="create-hang-page">
@@ -24,10 +25,13 @@
     </ion-item>
 
   </ion-list>
-  <button (click)="pickContact()">Pick a Contact</button>
 
-  <div center>
-    <button (click)="save()">Create</button>
+  <div>
+    <button (click)="pickContact()">Pick a Contact</button>
+  </div>
+
+  <div>
+    <button (click)="save()">Send Invites</button>
   </div>
 
 </ion-content>
