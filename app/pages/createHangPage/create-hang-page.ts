@@ -9,16 +9,29 @@ import DateGrabber from '../../date-grabber/date-grabber-component';
 
 export class CreateHangPage {
 
-  myDate: Date;
+  myDate:Date;
+  photoUrl:string;
+  whoList:string = '';
+  whoArray: any = [];
 
-  constructor(nav: NavController) {
+  constructor(nav:NavController) {
   }
 
   pickContact() {
     Contacts.pickContact()
-    .then((contact) => {
-      console.log('picked: ' + contact);
-    }, (err) => {})
+      .then((contact) => {
+        console.log('picked contact: ', contact);
+        
+        var name = contact.name.givenName + ' ' + contact.name.familyName.slice(0, 1) + '.';
+        this.whoArray.push(name);
+        this.whoList = this.whoArray.join(', ');
+
+        if (contact.photos) {
+          console.log('picked: ', contact.photos[0]);
+          this.photoUrl = contact.photos[0].value;
+        }
+      }, (err) => {
+      })
 
   }
 
