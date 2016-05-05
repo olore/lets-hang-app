@@ -1,10 +1,12 @@
 import {Page} from 'ionic-angular';
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {HangViewMini} from "../../hang-view-mini/hang-view-mini-component"
+import HangListService from "./hang-list-service";
 
 @Page({
   templateUrl: 'build/pages/hangListPage/hang-list-page.html',
   directives: [ROUTER_DIRECTIVES, HangViewMini],
+  providers: [HangListService]
 })
 
 export class HangListPage {
@@ -12,41 +14,13 @@ export class HangListPage {
   upcomingHangs: any = [];
   incomingHangs: any = [];
 
-  constructor() {
-    this.upcomingHangs = [
-      {
-        who: 'Kurt A. and Eric B.',
-        time: 'Monday 4pm',
-        description: 'Going to the movies to see Star Wars',
-        approved: true,
-        accepted: true
-      },
-      {
-        who: 'Bill C. and Mike D.',
-        time: 'Wed 7pm',
-        description: 'Going the Salt Lake City Bees game',
-        approved: false,
-        accepted: false,
-      }
-    ];
+  // Note: constructor is called on every access of the page
+  constructor(hangListService: HangListService) {
+    hangListService.getUpcoming()
+      .then((upcoming) => this.upcomingHangs = upcoming);
 
-    this.incomingHangs = [
-      {
-        who: 'Mary C. and Kim T.',
-        time: 'Sunday 11am',
-        description: 'Brunch',
-        approved: true,
-        accepted: false,
-      },
-      {
-        who: 'Mark Q. and Matt S.',
-        time: 'Sat 7pm',
-        description: 'Hiking',
-        approved: false,
-        accepted: false,
-      }
-    ];
-
+    hangListService.getIncoming()
+      .then((incoming) => this.incomingHangs = incoming);
   }
 
 }
