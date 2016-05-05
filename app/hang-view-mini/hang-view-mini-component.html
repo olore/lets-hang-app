@@ -1,0 +1,9 @@
+<ion-item>
+  <ion-avatar item-left>
+    <ion-icon primary *ngIf="hang.accepted" name="checkmark-circle"></ion-icon>
+    <ion-icon primary *ngIf="!hang.accepted" name="help-circle"></ion-icon>
+  </ion-avatar>
+  <h2>{{ hang.time}}</h2>
+  <h3>{{ hang.who }}</h3>
+  <p>{{ hang.description }}</p>
+</ion-item>

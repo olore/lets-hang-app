@@ -12,34 +12,17 @@
       Upcoming
     </ion-list-header>
 
-    <ion-item>
-      <ion-avatar item-left>
-        <ion-icon name="checkmark-circle"></ion-icon>
-      </ion-avatar>
-      <h2>Monday 4pm</h2>
-      <h3>Hanging with Jada and Olivia</h3>
-      <p>Going to movies to see Spiderman</p>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar item-left>
-        <ion-icon name="checkmark-circle"></ion-icon>
-      </ion-avatar>
-      <h2>Wednesday 7pm</h2>
-      <h3>Hanging with Eric and Joe</h3>
-      <p>Pizza party</p>
-    </ion-item>
+    <div *ngFor="#hang of upcomingHangs">
+      <hang-view-mini [hang]="hang"></hang-view-mini>
+    </div>
 
     <ion-list-header>
       Incoming
     </ion-list-header>
-    <ion-item>
-      <ion-avatar item-left>
-      </ion-avatar>
-      <h2>Saturday 1pm</h2>
-      <h3>Hanging with Mom and Dad</h3>
-      <p>Museum</p>
-    </ion-item>
+
+    <div *ngFor="#hang of incomingHangs">
+      <hang-view-mini [hang]="hang"></hang-view-mini>
+    </div>
 
   </ion-list>
 
