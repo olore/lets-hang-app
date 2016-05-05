@@ -6,8 +6,22 @@
   <ion-list inset>
 
     <ion-item>
-      <ion-label>WHO</ion-label>
-      <ion-input type="text" readonly="readOnly" (click)="pickDate()" [value]="whoList"></ion-input>
+      <h2>Who's coming?</h2>
+      <div>
+        <div>
+          <ion-icon primary (click)="pickContact()" style="font-size: 40px;" name="add-circle"></ion-icon>
+          <span *ngFor="#contact of whoArray">
+
+            <ion-avatar *ngIf="contact.photoUrl" style="display: inline">
+              <img style="height: 40px; display: inline" [src]="contact.photoUrl">
+            </ion-avatar>
+            <span *ngIf="!contact.photoUrl" style="font-size: 40px;">
+              {{ contact.initials }}
+            </span>
+          </span>
+        </div>
+
+      </div>
     </ion-item>
 
     <ion-item>
@@ -42,12 +56,7 @@
   </ion-list>
 
   <div>
-    <button (click)="pickContact()">Pick a Contact</button>
-  </div>
-
-  <div>
     <button (click)="save()">Send Invites</button>
   </div>
 
-  <img [src]="photoUrl" />
 </ion-content>
