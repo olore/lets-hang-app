@@ -1,0 +1,7 @@
+nvm use v4
+npm install --verbose
+ionic platform add ios
+
+
+ionic serve
+ionic emulate ios
