@@ -1,13 +1,28 @@
 <ion-content padding class="login-page">
 
-  <h1>Let's Hang</h1>
+  <ion-row>
+    <ion-col middle>
+      <div class="logo"></div>
+    </ion-col>
+  </ion-row>
 
-  <div padding>
-    <button block>Create Account</button>
-  </div>
+  <ion-row>
+    <ion-col middle>
+      <div class="tagline">
+        Hang with your peeps!
+      </div>
+    </ion-col>
+  </ion-row>
 
-  <div padding>
-    <a [routerLink]="['/HangList']">Sign In</a>
-  </div>
+  <ion-row bottom class="buttons">
+    <ion-col>
+      <div padding>
+        <button block>Create Account</button>
+      </div>
+      <div padding>
+        <a button block [routerLink]="['/HangList']">Sign In</a>
+      </div>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

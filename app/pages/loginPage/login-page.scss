@@ -1,3 +1,22 @@
 .login-page {
 
+  .logo {
+    background-image: url("../../images/lets-hang-out.jpg");
+    height: 219px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .buttons {
+    height: 55%; /* is there a better way than keep adjusting this? */
+  }
+
+  .tagline {
+    padding-top: 20px;
+    text-align: center;
+
+    font-face: "Roboto", "Helvetica Neue", sans-serif;
+    font-size: 30px;
+    color: darkgrey;
+  }
 }
