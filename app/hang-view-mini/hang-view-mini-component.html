@@ -1,9 +1,19 @@
 <ion-item>
+
+  <ion-avatar item-right>
+    <ion-icon primary *ngIf="hang.approved" style="color: darkgreen" name="checkmark-circle"></ion-icon>
+    <ion-icon primary *ngIf="!hang.approved" name="help-circle"></ion-icon>
+  </ion-avatar>
   <ion-avatar item-left>
-    <ion-icon primary *ngIf="hang.accepted" name="checkmark-circle"></ion-icon>
+    <ion-icon primary *ngIf="hang.accepted" style="color: darkgreen" name="checkmark-circle"></ion-icon>
     <ion-icon primary *ngIf="!hang.accepted" name="help-circle"></ion-icon>
   </ion-avatar>
-  <h2>{{ hang.time}}</h2>
-  <h3>{{ hang.who }}</h3>
+
+  <h2>{{ formattedStartDate }}</h2>
+
+  <h3>
+    With {{ formattedParticipants }}
+  </h3>
+
   <p>{{ hang.description }}</p>
 </ion-item>

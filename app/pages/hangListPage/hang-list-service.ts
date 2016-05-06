@@ -1,4 +1,6 @@
 import {Injectable} from "angular2/core";
+import {Person} from "./../../models/person-model";
+import {Hang} from "./../../models/hang-model";
 
 //TODO Use http to somewhere...
 
@@ -18,40 +20,32 @@ export default class HangListService {
 
 
   fetchUpcoming() {
+    let me = new Person('Brian', 'Olore');
+    let kurt = new Person('Kurt', 'Hoyt');
+    let eric = new Person('Eric', 'Stolten');
+    let bill = new Person('Bill', 'Croo');
+
+    var h1 = new Hang(me,  [eric, bill], new Date(), new Date(), 'Going to the movies');
+    h1.approved = true;
+
     return [
-      {
-        who: 'Kurt A. and Eric B.',
-        time: 'Monday 4pm',
-        description: 'Going to the movies to see Star Wars',
-        approved: true,
-        accepted: true
-      },
-      {
-        who: 'Bill C. and Mike D.',
-        time: 'Wed 7pm',
-        description: 'Going the Salt Lake City Bees game',
-        approved: false,
-        accepted: false,
-      }
+      new Hang(me,  [kurt, eric], new Date(), new Date(), 'this is the desc'),
+      h1,
     ];
   }
 
   fetchIncoming() {
+    let me = new Person('Brian', 'Olore');
+    let kurt = new Person('Kurt', 'Hoyt');
+    let eric = new Person('Eric', 'Stolten');
+    let bill = new Person('Bill', 'Croo');
+
+    var h1 = new Hang(me,  [eric, bill], new Date(), new Date(), 'Angular conference lunch');
+    h1.accepted = true;
+
     return [
-      {
-        who: 'Mary C. and Kim T.',
-        time: 'Sunday 11am',
-        description: 'Brunch',
-        approved: true,
-        accepted: false,
-      },
-      {
-        who: 'Mark Q. and Matt S.',
-        time: 'Sat 7pm',
-        description: 'Hiking',
-        approved: false,
-        accepted: false,
-      }
+      h1,
+      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport'),
     ];
   }
 
