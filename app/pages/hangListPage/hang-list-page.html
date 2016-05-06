@@ -1,9 +1,15 @@
-
-<ion-navbar *navbar>
-  <ion-title>
-    Upcoming
+<ion-toolbar primary>
+  <ion-title text-center>
+    My Hangs
   </ion-title>
-</ion-navbar>
+
+  <ion-buttons end>
+    <button [routerLink]="['/HangCreate']">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
+
+</ion-toolbar>
 
 <ion-content class="hang-list-page">
 
@@ -25,10 +31,6 @@
     </div>
 
   </ion-list>
-
-  <div padding>
-    <a button block [routerLink]="['/HangCreate']">New</a>
-  </div>
 
 </ion-content>
 

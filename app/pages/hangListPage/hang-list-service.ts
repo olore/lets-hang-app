@@ -29,7 +29,7 @@ export default class HangListService {
     h1.approved = true;
 
     return [
-      new Hang(me,  [kurt, eric], new Date(), new Date(), 'this is the desc'),
+      new Hang(me,  [kurt, eric], new Date(), new Date(), 'Bowling on Route 35'),
       h1,
     ];
   }

@@ -9,10 +9,10 @@
     <ion-icon primary *ngIf="!hang.accepted" name="help-circle"></ion-icon>
   </ion-avatar>
 
-  <h2>{{ formattedStartDate }}</h2>
+  <h3>{{ formattedStartDate }}</h3>
 
   <h3>
-    With {{ formattedParticipants }}
+    <span class="with">with</span> {{ formattedParticipants }}
   </h3>
 
   <p>{{ hang.description }}</p>
