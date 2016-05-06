@@ -1,6 +1,7 @@
 export class Person {
 
   public parent: Person;
+  public photoUrl: string;
 
   constructor(
     public firstName: String,

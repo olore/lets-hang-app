@@ -25,11 +25,11 @@ export default class HangListService {
     let eric = new Person('Eric', 'Stolten');
     let bill = new Person('Bill', 'Croo');
 
-    var h1 = new Hang(me,  [eric, bill], new Date(), new Date(), 'Going to the movies');
+    var h1 = new Hang(me, [eric, bill], new Date(), new Date(), 'Going to the movies', 'Cinema One');
     h1.approved = true;
 
     return [
-      new Hang(me,  [kurt, eric], new Date(), new Date(), 'Bowling on Route 35'),
+      new Hang(me,  [kurt, eric], new Date(), new Date(), 'Bowling on Route 35', 'Bowl Garden'),
       h1,
       h1,
       h1,
@@ -43,16 +43,16 @@ export default class HangListService {
     let eric = new Person('Eric', 'Stolten');
     let bill = new Person('Bill', 'Croo');
 
-    var h1 = new Hang(kurt,  [eric, bill], new Date(), new Date(), 'Angular conference lunch across the street next to the Taco Bell, about a mile away ');
+    var h1 = new Hang(kurt,  [eric, bill], new Date(), new Date(), 'Angular conference lunch across the street next to the Taco Bell, about a mile away', 'Utah');
     h1.accepted = true;
 
     return [
       h1,
-      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport'),
+      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
       h1,
-      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport'),
+      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
       h1,
-      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport'),
+      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
     ];
   }
 
