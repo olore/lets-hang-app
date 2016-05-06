@@ -1,7 +1,6 @@
 nvm use v4
 npm install --verbose
-ionic platform add ios
+ionic state restore   # install plugins & platforms from package.json
 
-
-ionic serve
-ionic emulate ios
+ionic serve           # Run in the browser
+ionic emulate ios     # Run in emulator

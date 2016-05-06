@@ -28,15 +28,7 @@ export class CreateHangPage {
           initials: contact.name.givenName.slice(0,1) + contact.name.familyName.slice(0,1),
           photoUrl: contact.photos && contact.photos[0].value
         });
-        //this.whoList = this.whoArray.join(', ');
-
-        // if (contact.photos) {
-        //   console.log('picked: ', contact.photos[0]);
-        //   this.photoUrl = contact.photos[0].value;
-        // }
-      }, (err) => {
-      })
-
+      });
   }
 
   save() {
