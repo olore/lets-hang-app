@@ -1,6 +1,5 @@
 <ion-item>
 
-
   <!-- Look at http://ionicframework.com/docs/v2/components/#sliding-list  -->
   <ion-avatar item-left>
     <ion-icon *ngIf="hang.accepted" style="color: darkgreen" name="thumbs-up" (click)="toggleAccepted()"></ion-icon>
@@ -16,9 +15,14 @@
     <h3>{{ formattedStartDate }}</h3>
 
     <h3>
+      Created by {{ hang.creator.getShortName() }}
+    </h3>
+
+    <h3>
       <span class="with">with</span> {{ formattedParticipants }}
     </h3>
 
     <p>{{ hang.description }}</p>
   </div>
+
 </ion-item>
