@@ -1,5 +1,4 @@
 import {Person} from "./person-model";
-import * as moment from 'moment/moment';
 
 export class Hang {
   

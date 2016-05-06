@@ -1,19 +1,24 @@
 <ion-item>
 
-  <ion-avatar item-right>
-    <ion-icon primary *ngIf="hang.approved" style="color: darkgreen" name="checkmark-circle"></ion-icon>
-    <ion-icon primary *ngIf="!hang.approved" name="help-circle"></ion-icon>
-  </ion-avatar>
+
+  <!-- Look at http://ionicframework.com/docs/v2/components/#sliding-list  -->
   <ion-avatar item-left>
-    <ion-icon primary *ngIf="hang.accepted" style="color: darkgreen" name="checkmark-circle"></ion-icon>
-    <ion-icon primary *ngIf="!hang.accepted" name="help-circle"></ion-icon>
+    <ion-icon *ngIf="hang.accepted" style="color: darkgreen" name="thumbs-up" (click)="toggleAccepted()"></ion-icon>
+    <ion-icon *ngIf="!hang.accepted" style="color: darkgray" name="thumbs-down" (click)="toggleAccepted()"></ion-icon>
   </ion-avatar>
 
-  <h3>{{ formattedStartDate }}</h3>
+  <div item-right>
+    <ion-icon *ngIf="hang.approved" style="color: darkgreen" name="checkmark-circle"></ion-icon>
+    <ion-icon *ngIf="!hang.approved" style="color: darkgray" name="close-circle"></ion-icon>
+  </div>
 
-  <h3>
-    <span class="with">with</span> {{ formattedParticipants }}
-  </h3>
+  <div (click)="showHang()">
+    <h3>{{ formattedStartDate }}</h3>
 
-  <p>{{ hang.description }}</p>
+    <h3>
+      <span class="with">with</span> {{ formattedParticipants }}
+    </h3>
+
+    <p>{{ hang.description }}</p>
+  </div>
 </ion-item>

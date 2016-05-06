@@ -1,0 +1,12 @@
+.create-hang-page {
+
+  ion-input {
+    input {
+      -webkit-backdrop-filter: none !important; /* why do i need this?? */
+    }
+  }
+
+  //ion-item {
+  //  padding-left: 0;
+  //}
+}

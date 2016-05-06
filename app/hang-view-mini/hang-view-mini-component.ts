@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from "angular2/core";
 import * as moment from 'moment/moment';
+import {NavController} from "ionic-angular/index";
+import {HangViewPage} from "../pages/hangViewPage/hang-view-page";
 
 @Component({
   selector: 'hang-view-mini',
@@ -14,12 +16,20 @@ export class HangViewMini implements OnInit {
   formattedStartDate: any;
   formattedParticipants: any;
 
-  constructor() {
+  constructor(public nav: NavController ) {
   }
 
   ngOnInit() {
     this.formattedStartDate = this.formatDate(this.hang.startDate);
     this.formattedParticipants = this.formatParticipants(this.hang.participants);
+  }
+
+  showHang() {
+    this.nav.push(HangViewPage, {hang: this.hang});
+  }
+
+  toggleAccepted() {
+    this.hang.accepted = !this.hang.accepted;
   }
 
   formatDate(date) {
