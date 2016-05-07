@@ -56,10 +56,23 @@
   </ion-list>
 
   <div>
+    <button (click)="showModal()">
+      Modal
+    </button>
+  </div>
+  <div>
     <button (click)="save()">
       <ion-icon name="paper-airplane"></ion-icon>
       Send Invites
     </button>
   </div>
 
+  <ion-list>
+    <ion-item>
+      <ion-label>Friends</ion-label>
+      <ion-select [(ngModel)]="me.friends" multiple="true">
+        <ion-option *ngFor="#friend of me.friends" [value]="friend">{{ friend.getShortName() }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>

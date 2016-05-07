@@ -1,4 +1,4 @@
-import {Page} from 'ionic-angular';
+import {Page, ViewController, NavController, Modal} from 'ionic-angular';
 import {Contacts} from 'ionic-native';
 import DateGrabber from '../../components/date-grabber/date-grabber-component';
 import CreateHangService from "./create-hang-service";
@@ -23,10 +23,16 @@ export class CreateHangPage {
   duration: any = "60";
 
   constructor(public createHangService: CreateHangService,
-              public meService: MeService) {
+              public meService: MeService,
+              public nav: NavController) {
 
     this.me = this.meService.getMe();
     console.log('My friends', this.me.friends);
+  }
+
+  showModal() {
+    let modal = Modal.create(MyModal);
+    this.nav.present(modal)
   }
 
   pickContact() {
@@ -46,6 +52,7 @@ export class CreateHangPage {
       });
   }
 
+  
   save() {
     var endDate = moment(this.startDate).add(this.duration, 'minutes').toDate();
     var me = new Person('Brian', 'Olore');
@@ -55,5 +62,23 @@ export class CreateHangPage {
 
   dateWasChanged(date) {
     this.startDate = date;
+  }
+}
+
+
+@Page({
+  template: `
+  <ion-content padding>
+    <h2>I'm a modal!</h2>
+    <button (click)="close()">Close</button>
+  </ion-content>`
+})
+class MyModal {
+  constructor(public viewCtrl: ViewController) {
+    this.viewCtrl = viewCtrl;
+  }
+
+  close() {
+    this.viewCtrl.dismiss();
   }
 }
