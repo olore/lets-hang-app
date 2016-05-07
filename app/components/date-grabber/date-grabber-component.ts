@@ -6,7 +6,7 @@ import DateGrabberService from './date-grabber-service';
   inputs: ['thedate'],
   selector: 'date-grabber',
   providers: [DateGrabberService],
-  templateUrl: 'build/date-grabber/date-grabber-component.html'
+  templateUrl: 'build/components/date-grabber/date-grabber-component.html'
 })
 
 export default class DateGrabber implements OnInit {

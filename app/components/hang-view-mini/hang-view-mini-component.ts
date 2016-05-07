@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from "angular2/core";
 import * as moment from 'moment/moment';
 import {NavController} from "ionic-angular/index";
-import {HangViewPage} from "../pages/hangViewPage/hang-view-page";
+import {HangViewPage} from "../../pages/hangViewPage/hang-view-page";
 
 @Component({
   selector: 'hang-view-mini',
-  templateUrl: 'build/hang-view-mini/hang-view-mini-component.html'
+  templateUrl: 'build/components/hang-view-mini/hang-view-mini-component.html'
 })
 
 export class HangViewMini implements OnInit {

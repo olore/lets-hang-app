@@ -1,6 +1,6 @@
 import {Page} from 'ionic-angular';
 import {ROUTER_DIRECTIVES} from "angular2/router";
-import {HangViewMini} from "../../hang-view-mini/hang-view-mini-component"
+import {HangViewMini} from "../../components/hang-view-mini/hang-view-mini-component"
 import HangListService from "./hang-list-service";
 
 @Page({

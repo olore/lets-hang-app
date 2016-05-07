@@ -4,6 +4,7 @@ import {RouteConfig} from "angular2/router";
 import {LoginPage} from "./pages/loginPage/login-page";
 import {CreateHangPage} from "./pages/createHangPage/create-hang-page";
 import {HangListPage} from "./pages/hangListPage/hang-list-page";
+import {MeService} from "./services/me-service";
 
 
 @App({
@@ -12,7 +13,9 @@ import {HangListPage} from "./pages/hangListPage/hang-list-page";
     // http://ionicframework.com/docs/v2/api/config/Config/
     // http://mcgivery.com/understanding-ionic-2-app/
     pageTransition: 'ios'
-  } 
+
+  },
+  providers: [MeService]
 })
 
 @RouteConfig([
@@ -32,4 +35,3 @@ export class MyApp {
     });
   }
 }
-
