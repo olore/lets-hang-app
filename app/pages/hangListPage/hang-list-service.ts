@@ -25,7 +25,7 @@ export default class HangListService {
     let eric = new Person('Eric', 'Stolten');
     let bill = new Person('Bill', 'Croo');
 
-    var h1 = new Hang(me, [eric, bill], new Date(), new Date(), 'Going to the movies', 'Cinema One');
+    let h1 = new Hang(me, [eric, bill], new Date(), new Date(), 'Going to the movies', 'Cinema One');
     h1.approved = true;
 
     return [
@@ -43,7 +43,7 @@ export default class HangListService {
     let eric = new Person('Eric', 'Stolten');
     let bill = new Person('Bill', 'Croo');
 
-    var h1 = new Hang(kurt,  [eric, bill], new Date(), new Date(), 'Angular conference lunch across the street next to the Taco Bell, about a mile away', 'Utah');
+    let h1 = new Hang(kurt,  [eric, bill], new Date(), new Date(), 'Angular conference lunch across the street next to the Taco Bell, about a mile away', 'Utah');
     h1.accepted = true;
 
     return [

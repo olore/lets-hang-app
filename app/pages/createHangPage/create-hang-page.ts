@@ -32,14 +32,14 @@ export class CreateHangPage {
   pickContact() {
     Contacts.pickContact()
       .then((contact) => {
-        var person = new Person(contact.name.givenName, contact.name.familyName);
+        let person = new Person(contact.name.givenName, contact.name.familyName);
         person.photoUrl = contact.photos && contact.photos[0].value;
         this.me.addFriend(person);
         this.whoArray.push(person);
       })
       .catch((err) => {
         if (err === 'cordova_not_available') {
-          var person = new Person('TestUser', 'One');
+          let person = new Person('TestUser', 'One');
           this.whoArray.push(person);
           this.me.addFriend(person);
         }
@@ -47,9 +47,9 @@ export class CreateHangPage {
   }
 
   save() {
-    var endDate = moment(this.startDate).add(this.duration, 'minutes').toDate();
-    var me = new Person('Brian', 'Olore');
-    var hang = new Hang(me, this.whoArray, this.startDate, endDate, this.description, this.location);
+    let endDate = moment(this.startDate).add(this.duration, 'minutes').toDate();
+    let me = new Person('Brian', 'Olore');
+    let hang = new Hang(me, this.whoArray, this.startDate, endDate, this.description, this.location);
     this.createHangService.save(hang);
   }
 
