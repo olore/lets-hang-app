@@ -1,4 +1,7 @@
 nvm use v4
+npm install -g ionic@beta
+npm install -g cordova
+
 npm install --verbose
 ionic state restore   # install plugins & platforms from package.json
 
