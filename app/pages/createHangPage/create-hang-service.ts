@@ -2,15 +2,15 @@ import {Injectable} from "angular2/core";
 import {Hang} from "../../models/hang-model";
 
 //TODO Use http to somewhere...
+import {HangListService}  from '../hangListPage/hang-list-service';
 
 @Injectable()
-export default class CreateHangService {
+export class CreateHangService {
 
-  constructor() {
+  constructor(private hangListService: HangListService) {
   }
 
   save(hang: Hang) {
-    console.log('Going to create a new Hang:', hang);
-    console.log('location', hang.location);
+    return this.hangListService.addHang(hang);
   }
 }

@@ -5,9 +5,18 @@ import {Hang} from "./../../models/hang-model";
 //TODO Use http to somewhere...
 
 @Injectable()
-export default class HangListService {
+export class HangListService {
+
+  public upcomingHangs = [];
 
   constructor() {
+  }
+
+  addHang(hang) {
+    return new Promise((resolve) => {
+      this.upcomingHangs.push(hang);
+      resolve();
+    });
   }
 
   getIncoming() {
@@ -20,6 +29,7 @@ export default class HangListService {
 
 
   fetchUpcoming() {
+    /*
     let me = new Person('Brian', 'Olore');
     let kurt = new Person('Kurt', 'Hoyt');
     let eric = new Person('Eric', 'Stolten');
@@ -27,14 +37,9 @@ export default class HangListService {
 
     let h1 = new Hang(me, [eric, bill], new Date(), new Date(), 'Going to the movies', 'Cinema One');
     h1.approved = true;
+    */
 
-    return [
-      new Hang(me,  [kurt, eric], new Date(), new Date(), 'Bowling on Route 35', 'Bowl Garden'),
-      h1,
-      h1,
-      h1,
-      h1,
-    ];
+    return this.upcomingHangs;
   }
 
   fetchIncoming() {
@@ -47,12 +52,12 @@ export default class HangListService {
     h1.accepted = true;
 
     return [
-      h1,
-      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
-      h1,
-      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
-      h1,
-      new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
+      //h1,
+      //new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
+      //h1,
+      //new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
+      //h1,
+      //new Hang(me,  [bill, kurt], new Date(), new Date(), 'Taxi back to airport', 'EWR'),
     ];
   }
 

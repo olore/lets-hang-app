@@ -3,7 +3,7 @@ import {DatePicker} from 'ionic-native';
 
 
 @Injectable()
-export default class DateGrabberService {
+export class DateGrabberService {
 
   public getDate(initDate: Date) {
     return DatePicker.show({

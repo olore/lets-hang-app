@@ -1,6 +1,6 @@
 import {Component, OnInit, EventEmitter, Output} from "angular2/core";
 import * as moment from 'moment/moment';
-import DateGrabberService from './date-grabber-service';
+import {DateGrabberService} from './date-grabber-service';
 
 @Component({
   inputs: ['thedate'],
@@ -9,7 +9,7 @@ import DateGrabberService from './date-grabber-service';
   templateUrl: 'build/components/date-grabber/date-grabber-component.html'
 })
 
-export default class DateGrabber implements OnInit {
+export class DateGrabber implements OnInit {
 
   // Inputs
   thedate: Date;

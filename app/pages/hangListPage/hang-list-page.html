@@ -5,7 +5,7 @@
   </ion-title>
 
   <ion-buttons end>
-    <button [routerLink]="['/HangCreate']">
+    <button (tap)="openCreateModal()">
       <ion-icon name="add-circle"></ion-icon>
     </button>
   </ion-buttons>
@@ -15,7 +15,7 @@
 <ion-content class="hang-list-page">
 
   <ion-list>
-    <ion-list-header class="upcoming" >
+    <ion-list-header class="upcoming" *ngIf="upcomingHangs.length > 0">
       Upcoming
     </ion-list-header>
 
@@ -23,7 +23,14 @@
       <hang-view-mini [hang]="hang"></hang-view-mini>
     </div>
 
-    <ion-list-header class="incoming">
+    <div class="no-upcoming" *ngIf=" upcomingHangs.length === 0 ">
+      You don't have any upcoming Hangs!
+      <br />
+      Maybe create a new one ?
+    </div>
+
+
+    <ion-list-header class="incoming" *ngIf="incomingHangs.length > 0">
       Incoming
     </ion-list-header>
 

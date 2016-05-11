@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from "angular2/core";
 import * as moment from 'moment/moment';
 import {NavController} from "ionic-angular/index";
 import {HangViewPage} from "../../pages/hangViewPage/hang-view-page";
+import {Person} from "../../models/person-model";
 
 @Component({
   selector: 'hang-view-mini',
@@ -37,7 +38,7 @@ export class HangViewMini implements OnInit {
   }
 
   // TODO replace this with a component that does initials/picture
-  formatParticipants(participants) {
+  formatParticipants(participants: Array<Person>) {
     var x = participants.map((participant) => {
       return participant.getShortName();
     });

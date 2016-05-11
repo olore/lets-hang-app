@@ -5,6 +5,7 @@ import {LoginPage} from "./pages/loginPage/login-page";
 import {CreateHangPage} from "./pages/createHangPage/create-hang-page";
 import {HangListPage} from "./pages/hangListPage/hang-list-page";
 import {MeService} from "./services/me-service";
+import {HangListService} from "./pages/hangListPage/hang-list-service";
 
 
 @App({
@@ -15,7 +16,7 @@ import {MeService} from "./services/me-service";
     pageTransition: 'ios'
 
   },
-  providers: [MeService]
+  providers: [MeService, HangListService]
 })
 
 @RouteConfig([
