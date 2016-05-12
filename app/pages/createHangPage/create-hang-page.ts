@@ -54,6 +54,7 @@ export class CreateHangPage {
     let me = this.meService.getMe();
 
     let hang = new Hang(me, this.whoArray, this.startDate, endDate, this.description, this.location);
+    hang.accepted = true;
     this.createHangService.save(hang)
       .then(() => {
         this.viewCtrl.dismiss();
