@@ -7,3 +7,5 @@ ionic state restore   # install plugins & platforms from package.json
 
 ionic serve           # Run in the browser
 ionic emulate ios     # Run in emulator
+
+Generating icons: http://ionicframework.com/docs/cli/icon-splashscreen.html
