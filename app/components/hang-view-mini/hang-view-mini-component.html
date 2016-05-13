@@ -14,7 +14,7 @@
   <div (tap)="showHang()" >
     <h3>{{ formattedStartDate }}</h3>
 
-    <h3>
+    <h3 *ngIf="hang.creator == me">
       Created by {{ hang.creator.getShortName() }}
     </h3>
 
@@ -23,6 +23,7 @@
     </h3>
 
     <p>{{ hang.description }}</p>
+    <p>{{ hang.location }}</p>
   </div>
 
 </ion-item>

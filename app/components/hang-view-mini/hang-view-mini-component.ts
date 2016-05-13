@@ -3,6 +3,7 @@ import * as moment from 'moment/moment';
 import {NavController} from "ionic-angular/index";
 import {HangViewPage} from "../../pages/hangViewPage/hang-view-page";
 import {Person} from "../../models/person-model";
+import {MeService} from "../../services/me-service";
 
 @Component({
   selector: 'hang-view-mini',
@@ -13,11 +14,14 @@ export class HangViewMini implements OnInit {
 
   @Input()
   hang: any;
+  me: Person;
 
   formattedStartDate: any;
   formattedParticipants: any;
 
-  constructor(public nav: NavController ) {
+  constructor(public nav: NavController,
+  meService: MeService) {
+    this.me = meService.getMe();
   }
 
   ngOnInit() {
