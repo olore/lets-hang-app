@@ -11,7 +11,6 @@ import {CreateHangPage} from "../createHangPage/create-hang-page";
 @Page({
   templateUrl: 'build/pages/hangListPage/hang-list-page.html',
   directives: [ROUTER_DIRECTIVES, HangViewMini],
-  //providers: [HangListService]
 })
 
 export class HangListPage implements OnInit {
@@ -29,21 +28,23 @@ export class HangListPage implements OnInit {
     this.loadData();
   }
 
-  loadData() {
-    console.log('loadData');
+  /////////
+
+  openCreateModal() {
+    this.modal = Modal.create(CreateHangPage);
+    this.nav.present(this.modal);
+    this.modal.onDismiss(() => this.loadData);
+  }
+
+
+  /////////
+
+  private loadData() {
     this.hangListService.getUpcoming()
       .then((upcoming) => this.upcomingHangs = upcoming);
 
     this.hangListService.getIncoming()
       .then((incoming) => this.incomingHangs = incoming);
-  }
-
-  openCreateModal() {
-    this.modal = Modal.create(CreateHangPage);
-    this.nav.present(this.modal);
-    this.modal.onDismiss(() => {
-      this.loadData();
-    });
   }
 
 

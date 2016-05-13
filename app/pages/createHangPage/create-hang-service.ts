@@ -1,16 +1,21 @@
 import {Injectable} from "angular2/core";
 import {Hang} from "../../models/hang-model";
-
-//TODO Use http to somewhere...
-import {HangListService}  from '../hangListPage/hang-list-service';
+import {HangListService}  from '../hangListPage/hang-list-service'; //TODO: Remove this hack
 
 @Injectable()
 export class CreateHangService {
 
-  constructor(private hangListService: HangListService) {
+  constructor(private hangListService: HangListService) { //TODO: Remove this hack
   }
 
   save(hang: Hang) {
-    return this.hangListService.addHang(hang);
+    //TODO save it through some HTTP API
+
+    return new Promise((resolve) => {
+
+      // TODO figure out how to let the upcomingHangs know about this new one
+      this.hangListService.upcomingHangs.push(hang); //TODO: Remove this hack
+      resolve();
+    });
   }
 }
