@@ -1,13 +1,14 @@
 import {Page} from 'ionic-angular';
 import {Contacts} from 'ionic-native';
+import {ViewController} from "ionic-angular/index";
+import {Output} from "angular2/core";
+import * as moment from 'moment/moment';
+
 import {DateGrabber} from '../../components/date-grabber/date-grabber-component';
 import {CreateHangService} from "./create-hang-service";
 import {Person} from "../../models/person-model";
 import {Hang} from "../../models/hang-model";
-import * as moment from 'moment/moment';
 import {MeService} from "../../services/me-service";
-import {ViewController} from "ionic-angular/index";
-import {Output} from "angular2/core";
 
 @Page({
   templateUrl: 'build/pages/createHangPage/create-hang-page.html',
@@ -29,7 +30,6 @@ export class CreateHangPage {
               public meService: MeService) {
 
     this.me = this.meService.getMe();
-    console.log('My friends', this.me.friends);
   }
 
   pickContact() {
@@ -51,9 +51,10 @@ export class CreateHangPage {
 
   save() {
     let endDate = moment(this.startDate).add(this.duration, 'minutes').toDate();
-    let me = this.meService.getMe();
 
-    let hang = new Hang(me, this.whoArray, this.startDate, endDate, this.description, this.location);
+    let hang = new Hang(this.me, this.whoArray,
+                        this.startDate, endDate,
+                        this.description, this.location);
     hang.accepted = true;
     this.createHangService.save(hang)
       .then(() => {
