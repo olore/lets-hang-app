@@ -23,6 +23,7 @@ export class DateGrabber implements OnInit {
 
   ngOnInit(): void {
     this.thedate = this.thedate ? this.thedate : moment().add(1, 'day').minute(0).toDate();
+    this.onDateChanged.emit(this.thedate);
   }
 
 
