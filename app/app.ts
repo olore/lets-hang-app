@@ -4,11 +4,13 @@ import {RouteConfig} from "angular2/router";
 import {LoginPage} from "./pages/loginPage/login-page";
 import {CreateHangPage} from "./pages/createHangPage/create-hang-page";
 import {HangListPage} from "./pages/hangListPage/hang-list-page";
+
 import {MeService} from "./services/me-service";
 import {HangListService} from "./pages/hangListPage/hang-list-service";
-
+import {FirebaseConfigWrapper} from "./firebase";
 
 @App({
+
   template: '<ion-nav [root]="rootPage"></ion-nav>',
   config: {
     // http://ionicframework.com/docs/v2/api/config/Config/
@@ -16,7 +18,11 @@ import {HangListService} from "./pages/hangListPage/hang-list-service";
     pageTransition: 'ios'
 
   },
-  providers: [MeService, HangListService]
+  providers: [
+    MeService,
+    HangListService,
+    FirebaseConfigWrapper.getProviders()
+  ]
 })
 
 @RouteConfig([
@@ -35,4 +41,5 @@ export class MyApp {
       StatusBar.styleDefault();
     });
   }
+
 }

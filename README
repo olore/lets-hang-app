@@ -11,3 +11,11 @@ ionic emulate -l -c --target='iPhone-5s, 8.4' --debug ios # Live reload & conslo
 
 Generating icons: http://ionicframework.com/docs/cli/icon-splashscreen.html
 
+typings install firebase --ambient --save
+will fix these errors:
+TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/database/database.d.ts(8,29): Error TS2304: Cannot find name 'Firebase'.
+TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/database/database.d.ts(9,31): Error TS2304: Cannot find name 'Firebase'.
+TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/providers/auth.d.ts(10,25): Error TS2304: Cannot find name 'FirebaseCredentials'.
+TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/providers/auth.d.ts(13,16): Error TS2304: Cannot find name 'FirebaseAuthData'.
+TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/providers/auth.d.ts(14,29): Error TS2304: Cannot find name 'FirebaseCredentials'.
+
