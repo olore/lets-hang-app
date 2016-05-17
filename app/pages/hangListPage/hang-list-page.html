@@ -34,21 +34,22 @@
         <hang-view-mini [hang]="hang"></hang-view-mini>
       </div>
 
-      <div class="no-upcoming">
+      <div *ngIf="upcomingHangs.length === 0" class="no-upcoming">
         You don't have any upcoming Hangs!
         <br />
         Maybe create a new one ?
       </div>
 
 
-      <ion-list-header class="incoming">
-        Incoming
-      </ion-list-header>
+      <div *ngIf="incomingHangs.length > 0">
+        <ion-list-header class="incoming">
+          Incoming
+        </ion-list-header>
 
-      <div *ngFor="#hang of incomingHangs">
-        <hang-view-mini [hang]="hang"></hang-view-mini>
+        <div *ngFor="#hang of incomingHangs">
+          <hang-view-mini [hang]="hang"></hang-view-mini>
+        </div>
       </div>
-
     </ion-list>
   </div>
 

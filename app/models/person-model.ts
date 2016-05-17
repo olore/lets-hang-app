@@ -9,6 +9,12 @@ export class Person {
     public lastName: String) {
   }
 
+  // For now ... eventually compare firebase ids ?
+  equals(otherPerson) {
+    return otherPerson.firstName === this.firstName
+      && otherPerson.lastName === this.lastName;
+  }
+
   addFriend(p: Person) {
     this.friends.push(p);
   }

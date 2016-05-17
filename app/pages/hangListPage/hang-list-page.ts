@@ -1,17 +1,17 @@
-import {Page} from 'ionic-angular';
 import {ROUTER_DIRECTIVES} from "angular2/router";
+import {OnInit} from "angular2/core";
+import {Page} from 'ionic-angular';
+import {Modal, NavController} from "ionic-angular/index";
+
 import {HangViewMini} from "../../components/hang-view-mini/hang-view-mini-component"
 import {HangListService} from "./hang-list-service";
-import {OnInit} from "angular2/core";
-import {Modal} from "ionic-angular/index";
-import {NavController} from "ionic-angular/index";
 import {CreateHangPage} from "../createHangPage/create-hang-page";
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription";
 import {MeService} from "../../services/me-service";
 import {Person} from "../../models/person-model";
 import {Hang} from "../../models/hang-model";
 
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 
 @Page({
   templateUrl: 'build/pages/hangListPage/hang-list-page.html',
@@ -39,13 +39,17 @@ export class HangListPage implements OnInit {
     this.subscription = this.hangListService.getAll()
       .subscribe(hang => {
         this.isLoading = false;
-        if (hang.creator === this.me) {  //FIXME this doesn't work
+        if (hang.creator.equals(this.me)) {
           this.upcomingHangs.push(hang);
         } else {
           this.incomingHangs.push(hang);
         }
 
       });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   /////////
