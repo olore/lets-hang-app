@@ -14,31 +14,43 @@
 
 <ion-content class="hang-list-page">
 
-  <ion-list>
-    <ion-list-header class="upcoming">
-      Upcoming
-    </ion-list-header>
-
-    <div *ngFor="#hang of upcomingHangs">
-      <hang-view-mini [hang]="hang"></hang-view-mini>
+  <div *ngIf="isLoading" style="text-align: center; padding-bottom: 5px">
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
     </div>
+    Loading...
+  </div>
 
-    <div class="no-upcoming">
-      You don't have any upcoming Hangs!
-      <br />
-      Maybe create a new one ?
-    </div>
+  <div *ngIf="!isLoading">
+    <ion-list>
+      <ion-list-header class="upcoming">
+        Upcoming
+      </ion-list-header>
+
+      <div *ngFor="#hang of upcomingHangs">
+        <hang-view-mini [hang]="hang"></hang-view-mini>
+      </div>
+
+      <div class="no-upcoming">
+        You don't have any upcoming Hangs!
+        <br />
+        Maybe create a new one ?
+      </div>
 
 
-    <ion-list-header class="incoming">
-      Incoming
-    </ion-list-header>
+      <ion-list-header class="incoming">
+        Incoming
+      </ion-list-header>
 
-    <div *ngFor="#hang of incomingHangs">
-      <hang-view-mini [hang]="hang"></hang-view-mini>
-    </div>
+      <div *ngFor="#hang of incomingHangs">
+        <hang-view-mini [hang]="hang"></hang-view-mini>
+      </div>
 
-  </ion-list>
+    </ion-list>
+  </div>
 
 </ion-content>
 

@@ -19,7 +19,7 @@ import {MeService} from "../../services/me-service";
 export class CreateHangPage {
 
   me: Person;
-  startDate:Date;
+  startDate: Date;
   whoArray: any = [];
   description: string;
   location: string;

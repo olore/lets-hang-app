@@ -21,7 +21,8 @@ import {Hang} from "../../models/hang-model";
 export class HangListPage implements OnInit {
 
   me: Person;
-  modal;
+  isLoading: boolean;
+  modal: Modal;
   upcomingHangs: Hang[] = [];
   incomingHangs: Hang[] = [];
   subscription: Subscription;
@@ -31,12 +32,13 @@ export class HangListPage implements OnInit {
     public hangListService: HangListService,
     public meService: MeService) {
     this.me = meService.getMe();
+    this.isLoading = true;
   }
 
   ngOnInit() {
-    //this.loadData();
     this.subscription = this.hangListService.getAll()
       .subscribe(hang => {
+        this.isLoading = false;
         if (hang.creator === this.me) {  //FIXME this doesn't work
           this.upcomingHangs.push(hang);
         } else {
@@ -51,16 +53,6 @@ export class HangListPage implements OnInit {
   openCreateModal() {
     this.modal = Modal.create(CreateHangPage);
     this.nav.present(this.modal);
-    //this.modal.onDismiss(() => this.loadData);
   }
-
-
-  /////////
-
-  //private loadData() {
-  //  this.upcomingHangs = this.hangListService.getUpcoming();
-  //  this.incomingHangs = this.hangListService.getAll();
-  //}
-
 
 }

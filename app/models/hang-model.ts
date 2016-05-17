@@ -1,3 +1,4 @@
+import * as moment from 'moment/moment';
 import {Person} from "./person-model";
 
 export class Hang {
@@ -9,10 +10,25 @@ export class Hang {
   constructor(
     public creator: Person,
     public participants: Array<Person>,
-    public startDate: any, //Date,
-    public endDate: any, //Date,
+    public startDate: Date,
+    public endDate: Date,
     public description: string,
     public location: string) {
   }
 
+  /*
+    - Must convert dates to string
+    - Probably need to do something about Creator
+    - Probably need to do something about Participants
+   */
+  toFirebase() {
+    return {
+      creator: this.creator,
+      participants: this.participants,
+      startDate: moment(this.startDate).format(),
+      endDate: moment(this.endDate).format(),
+      description: this.description,
+      location: this.location
+    }
+  }
 }

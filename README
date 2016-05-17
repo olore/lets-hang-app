@@ -19,3 +19,5 @@ TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/provi
 TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/providers/auth.d.ts(13,16): Error TS2304: Cannot find name 'FirebaseAuthData'.
 TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/providers/auth.d.ts(14,29): Error TS2304: Cannot find name 'FirebaseCredentials'.
 
+
+Spinner from http://tobiasahlin.com/spinkit/
