@@ -6,26 +6,44 @@ import {OnInit} from "angular2/core";
 import {Modal} from "ionic-angular/index";
 import {NavController} from "ionic-angular/index";
 import {CreateHangPage} from "../createHangPage/create-hang-page";
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
+import {MeService} from "../../services/me-service";
+import {Person} from "../../models/person-model";
+import {Hang} from "../../models/hang-model";
 
 
 @Page({
   templateUrl: 'build/pages/hangListPage/hang-list-page.html',
-  directives: [ROUTER_DIRECTIVES, HangViewMini],
+  directives: [HangViewMini],
 })
 
 export class HangListPage implements OnInit {
 
+  me: Person;
   modal;
-  upcomingHangs: any = [];
-  incomingHangs: any = [];
+  upcomingHangs: Hang[] = [];
+  incomingHangs: Hang[] = [];
+  subscription: Subscription;
 
   // Note: constructor is called on every access of the page
   constructor(public nav: NavController,
-    public hangListService: HangListService) {
+    public hangListService: HangListService,
+    public meService: MeService) {
+    this.me = meService.getMe();
   }
 
   ngOnInit() {
-    this.loadData();
+    //this.loadData();
+    this.subscription = this.hangListService.getAll()
+      .subscribe(hang => {
+        if (hang.creator === this.me) {  //FIXME this doesn't work
+          this.upcomingHangs.push(hang);
+        } else {
+          this.incomingHangs.push(hang);
+        }
+
+      });
   }
 
   /////////
@@ -33,19 +51,16 @@ export class HangListPage implements OnInit {
   openCreateModal() {
     this.modal = Modal.create(CreateHangPage);
     this.nav.present(this.modal);
-    this.modal.onDismiss(() => this.loadData);
+    //this.modal.onDismiss(() => this.loadData);
   }
 
 
   /////////
 
-  private loadData() {
-    this.hangListService.getUpcoming()
-      .then((upcoming) => this.upcomingHangs = upcoming);
-
-    this.hangListService.getIncoming()
-      .then((incoming) => this.incomingHangs = incoming);
-  }
+  //private loadData() {
+  //  this.upcomingHangs = this.hangListService.getUpcoming();
+  //  this.incomingHangs = this.hangListService.getAll();
+  //}
 
 
 }

@@ -1,32 +1,58 @@
 import {Injectable} from "angular2/core";
+import * as moment from 'moment/moment';
 import {Person} from "./../../models/person-model";
 import {Hang} from "./../../models/hang-model";
+import {Observable} from "rxjs/Observable";
+
+import {AngularFire} from "angularfire2";
 
 @Injectable()
 export class HangListService {
 
-  public upcomingHangs = [];
+  db: Firebase;
 
-  constructor() {
+  constructor(public af: AngularFire) {
+    this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');
   }
 
-  getIncoming() {
-    return Promise.resolve(this.fetchIncoming());
+  getAll() {
+    return Observable.create(observer => {
+      let listener = this.db.on('child_added', snapshot => {
+        let hang = this.createHangFromFirebase(snapshot);
+        observer.next(hang);
+      }, observer.error);
+
+      return () => {
+        this.db.off('child_added', listener);
+      };
+    });
   }
 
-  getUpcoming() {
-    return Promise.resolve(this.fetchUpcoming());
-  }
+  //////////////
 
+  // meh why do i have to objectify these guys too ?  :(
+  createHangFromFirebase(snapshot) {
+    let data = snapshot.val();
+    let creator = new Person(data.creator.firstName, data.creator.lastName);
 
-  fetchUpcoming() {
-    //TODO retrieve it through some HTTP API
-    return this.upcomingHangs;
-  }
+    let participants = [];
 
-  fetchIncoming() {
-    //TODO retrieve it through some HTTP API
-    return [ ];
+    if (data.participants) {
+      participants = data.participants.map((u) => {
+        return new Person(u.firstName, u.lastName);
+      });
+    }
+
+    let hang = new Hang(
+      creator,
+      participants,
+      moment(data.startDate).toDate(),
+      moment(data.endDate).toDate(),
+      data.description,
+      data.location
+    );
+    hang.key = snapshot.key();
+    return hang;
   }
 
 }

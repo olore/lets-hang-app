@@ -15,7 +15,7 @@
 <ion-content class="hang-list-page">
 
   <ion-list>
-    <ion-list-header class="upcoming" *ngIf="upcomingHangs.length > 0">
+    <ion-list-header class="upcoming">
       Upcoming
     </ion-list-header>
 
@@ -23,14 +23,14 @@
       <hang-view-mini [hang]="hang"></hang-view-mini>
     </div>
 
-    <div class="no-upcoming" *ngIf=" upcomingHangs.length === 0 ">
+    <div class="no-upcoming">
       You don't have any upcoming Hangs!
       <br />
       Maybe create a new one ?
     </div>
 
 
-    <ion-list-header class="incoming" *ngIf="incomingHangs.length > 0">
+    <ion-list-header class="incoming">
       Incoming
     </ion-list-header>
 

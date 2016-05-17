@@ -18,13 +18,21 @@ export class Person {
   }
 
   getInitials() {
-    return this.firstName.slice(0,1) +
-        this.lastName.slice(0,1);
+    if (this.firstName && this.lastName) {
+      return this.firstName.slice(0, 1) +
+        this.lastName.slice(0, 1);
+    } else {
+      return "??";
+    }
   }
   
   getShortName() {
-    return this.firstName + ' ' +
-      this.lastName.slice(0,1);
+    if (this.firstName && this.lastName) {
+      return this.firstName + ' ' +
+        this.lastName.slice(0, 1);
+    } else {
+      return this.firstName;
+    }
   }
 
   

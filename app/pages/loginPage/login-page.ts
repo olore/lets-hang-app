@@ -4,11 +4,10 @@ import {MeService} from "../../services/me-service";
 import {Component} from "angular2/core";
 import {Observable} from "rxjs/Observable";
 import {AngularFire} from "angularfire2";
-import {FooBar} from "./foo-bar";
 
 @Page({
   templateUrl: 'build/pages/loginPage/login-page.html',
-  directives: [ROUTER_DIRECTIVES, FooBar],
+  directives: [ROUTER_DIRECTIVES],
 })
 
 export class LoginPage {
