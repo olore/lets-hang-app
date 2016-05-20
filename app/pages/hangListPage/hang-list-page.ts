@@ -12,6 +12,7 @@ import {Hang} from "../../models/hang-model";
 
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
+import {FirebaseAuth} from "angularfire2/angularfire2";
 
 @Page({
   templateUrl: 'build/pages/hangListPage/hang-list-page.html',
@@ -26,15 +27,19 @@ export class HangListPage implements OnInit {
   upcomingHangs: Hang[] = [];
   incomingHangs: Hang[] = [];
   subscription: Subscription;
-
+  auth: FirebaseAuth;
+  
   // Note: constructor is called on every access of the page
   constructor(
     public nav: NavController,
     public hangListService: HangListService,
+    public auth: FirebaseAuth,
     public meService: MeService) {
 
     this.me = meService.getMe();
     this.isLoading = true;
+
+    console.log(this.auth.getAuth());
   }
 
   ngOnInit() {

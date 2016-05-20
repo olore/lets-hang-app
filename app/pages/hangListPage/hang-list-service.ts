@@ -5,18 +5,26 @@ import {Hang} from "./../../models/hang-model";
 import {Observable} from "rxjs/Observable";
 
 import {AngularFire} from "angularfire2";
+import {FirebaseAuth} from "angularfire2/angularfire2";
+import {AuthProviders} from "angularfire2/angularfire2";
 
 @Injectable()
 export class HangListService {
 
   db: Firebase;
 
-  constructor(public af: AngularFire) {
+  constructor(
+    public af: AngularFire
+    ){
+
     this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');
+
+
   }
 
   getAll() {
     return Observable.create(observer => {
+      //TODO can I listen for removed & edited ?
       let listener = this.db.on('child_added', snapshot => {
         let hang = this.createHangFromFirebase(snapshot);
         observer.next(hang);
