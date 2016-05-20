@@ -28,14 +28,17 @@ export class HangListPage implements OnInit {
   subscription: Subscription;
 
   // Note: constructor is called on every access of the page
-  constructor(public nav: NavController,
+  constructor(
+    public nav: NavController,
     public hangListService: HangListService,
     public meService: MeService) {
+
     this.me = meService.getMe();
     this.isLoading = true;
   }
 
   ngOnInit() {
+    console.log('subscribing');
     this.subscription = this.hangListService.getAll()
       .subscribe(hang => {
         this.isLoading = false;
@@ -49,6 +52,7 @@ export class HangListPage implements OnInit {
   }
 
   ngOnDestroy() {
+    console.log('unsubscribing');
     this.subscription.unsubscribe();
   }
 
