@@ -7,16 +7,19 @@ import {FirebaseAuth} from "angularfire2/angularfire2";
 import {AuthProviders} from "angularfire2/angularfire2";
 import {NavController} from "ionic-angular/index";
 import {HangListPage} from "../hangListPage/hang-list-page";
+import {AuthService} from "../../services/auth";
+
 
 @Page({
   templateUrl: 'build/pages/loginPage/login-page.html',
   directives: [ROUTER_DIRECTIVES],
+  providers: [AuthService]
 })
 
 export class LoginPage {
 
   constructor(
-    public auth: FirebaseAuth,
+    public auth: AuthService,
     public meService: MeService,
     public nav: NavController
 
@@ -25,21 +28,4 @@ export class LoginPage {
     this.meService.setMe();
   }
 
-  login() {
-    console.log('login!');
-    // This is null before auth
-    //console.log(this.auth.getAuth());
-
-    this.auth.login({
-      provider: AuthProviders.Twitter
-    }).then((authState) => {
-      console.log(this.auth.getAuth());
-      console.log(authState);
-      // .twitter.displayName
-      //        .username
-      //        .cachedUserProfile (lotsa goodies in here!)
-      // .uid
-      this.nav.push(HangListPage);
-    });
-  }
 }

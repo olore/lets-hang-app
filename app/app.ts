@@ -8,6 +8,10 @@ import {HangListPage} from "./pages/hangListPage/hang-list-page";
 import {MeService} from "./services/me-service";
 import {HangListService} from "./pages/hangListPage/hang-list-service";
 import {FirebaseConfigWrapper} from "./firebase";
+import {AuthHttp} from "angular2-jwt/angular2-jwt";
+import {AuthConfig} from "angular2-jwt/angular2-jwt";
+import {Http} from "angular2/http";
+import {provide} from "angular2/core";
 
 @App({
 
@@ -21,7 +25,13 @@ import {FirebaseConfigWrapper} from "./firebase";
   providers: [
     MeService,
     HangListService,
-    FirebaseConfigWrapper.getProviders()
+    FirebaseConfigWrapper.getProviders(),
+    provide(AuthHttp, {
+      useFactory: (http) => {
+        return new AuthHttp(new AuthConfig(), http);
+      },
+      deps: [Http]
+    })
   ]
 })
 

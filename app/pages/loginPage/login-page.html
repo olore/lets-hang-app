@@ -1,5 +1,19 @@
 <ion-content padding class="login-page">
 
+  <ion-card>
+
+    <ion-item *ngIf="auth.user">
+      <ion-avatar item-left>
+        <img src="{{ auth.user.picture }}">
+      </ion-avatar>
+      <h2>{{ auth.user.nickname }}</h2>
+      <p>{{ auth.user.email }}</p>
+    </ion-item>
+
+  </ion-card>
+
+  <button block (click)="auth.logout()">Logout</button>
+
   <ion-row>
     <ion-col>
       <img class="center" src="images/lets-hang-out.jpg" style="max-height: 200px"/>
@@ -20,7 +34,7 @@
         <button block>Create Account</button>
       </div>
       <div padding>
-        <a button block (click)="login()">Sign In</a>
+        <a button block (click)="auth.login()">Sign In</a>
       </div>
     </ion-col>
   </ion-row>
