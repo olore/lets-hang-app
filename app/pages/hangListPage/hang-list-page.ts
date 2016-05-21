@@ -1,8 +1,7 @@
 import {Page} from 'ionic-angular';
-import {ROUTER_DIRECTIVES} from "angular2/router";
 import {HangViewMini} from "../../components/hang-view-mini/hang-view-mini-component"
 import {HangListService} from "./hang-list-service";
-import {OnInit} from "angular2/core";
+import {OnInit} from "@angular/core";
 import {Modal} from "ionic-angular/index";
 import {NavController} from "ionic-angular/index";
 import {CreateHangPage} from "../createHangPage/create-hang-page";
@@ -10,7 +9,7 @@ import {CreateHangPage} from "../createHangPage/create-hang-page";
 
 @Page({
   templateUrl: 'build/pages/hangListPage/hang-list-page.html',
-  directives: [ROUTER_DIRECTIVES, HangViewMini],
+  directives: [HangViewMini]
 })
 
 export class HangListPage implements OnInit {

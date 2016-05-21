@@ -19,7 +19,7 @@
       Upcoming
     </ion-list-header>
 
-    <div *ngFor="#hang of upcomingHangs">
+    <div *ngFor="let hang of upcomingHangs">
       <hang-view-mini [hang]="hang"></hang-view-mini>
     </div>
 
@@ -34,7 +34,7 @@
       Incoming
     </ion-list-header>
 
-    <div *ngFor="#hang of incomingHangs">
+    <div *ngFor="let hang of incomingHangs">
       <hang-view-mini [hang]="hang"></hang-view-mini>
     </div>
 

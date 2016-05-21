@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter, Output} from "angular2/core";
+import {Component, OnInit, EventEmitter, Output} from "@angular/core";
 import * as moment from 'moment/moment';
 import {DateGrabberService} from './date-grabber-service';
 
@@ -15,10 +15,10 @@ export class DateGrabber implements OnInit {
   thedate: Date;
 
   @Output()
-  onDateChanged: EventEmitter<Date>;
+  onDateChanged: EventEmitter<any>;
 
   constructor(private dateGrabberService: DateGrabberService) {
-    this.onDateChanged = new EventEmitter();
+    this.onDateChanged = new EventEmitter(false);
   }
 
   ngOnInit(): void {

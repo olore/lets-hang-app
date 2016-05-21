@@ -10,7 +10,7 @@
   <h3>{{ hang.description }}</h3>
 
   <h3>Participants</h3>
-  <div *ngFor="#participant of hang.participants">
+  <div *ngFor="let participant of hang.participants">
     {{ participant.getShortName() }}
   </div>
 

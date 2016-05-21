@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 import {Person} from "./../../models/person-model";
 import {Hang} from "./../../models/hang-model";
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "angular2/core";
+import {Component, Input, OnInit} from "@angular/core";
 import * as moment from 'moment/moment';
 import {NavController} from "ionic-angular/index";
 import {HangViewPage} from "../../pages/hangViewPage/hang-view-page";
