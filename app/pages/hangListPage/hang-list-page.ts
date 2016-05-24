@@ -1,10 +1,8 @@
-import {ROUTER_DIRECTIVES} from "angular2/router";
-import {OnInit} from "angular2/core";
 import {Page} from 'ionic-angular';
-import {Modal, NavController} from "ionic-angular/index";
-
 import {HangViewMini} from "../../components/hang-view-mini/hang-view-mini-component"
 import {HangListService} from "./hang-list-service";
+import {OnInit} from "@angular/core";
+import {Modal, NavController} from "ionic-angular/index";
 import {CreateHangPage} from "../createHangPage/create-hang-page";
 import {MeService} from "../../services/me-service";
 import {Person} from "../../models/person-model";

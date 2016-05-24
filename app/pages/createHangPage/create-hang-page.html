@@ -10,7 +10,7 @@
       <div>
         <div>
           <ion-icon primary (tap)="pickContact()" style="font-size: 40px;" name="person-add"></ion-icon>
-          <span *ngFor="#contact of whoArray">
+          <span *ngFor="let contact of whoArray">
 
             <ion-avatar *ngIf="contact.photoUrl" style="display: inline">
               <img style="height: 40px; display: inline" [src]="contact.photoUrl">

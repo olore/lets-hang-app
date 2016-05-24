@@ -1,22 +1,29 @@
 <ion-navbar *navbar primary>
-  <ion-title text-center>Need a title here?</ion-title>
+  <ion-title text-center>Deets</ion-title>
 </ion-navbar>
 
 <ion-content class="hang-view-page">
 
-  <h3>Created by {{ hang.creator.getShortName() }}</h3>
-  <h3>Start Date: {{ hang.startDate }}</h3>
-  <h3>End Date: {{ hang.endDate }}</h3>
-  <h3>Length: {{ diff }} hour(s)</h3>
   <h3>{{ hang.description }}</h3>
+  <p>{{ hang.location }}</p>
+  <p>Created by {{ hang.creator.getShortName() }}</p>
+  <p>Start: {{ hang.startDate }}</p>
+  <p>End: {{ hang.endDate }}</p>
+  <p>Length: {{ diff }} hour(s)</p>
 
-  <h3>Participants</h3>
-  <div *ngFor="#participant of hang.participants">
+  <h3>Who's coming?</h3>
+  <div *ngFor="let participant of hang.participants">
     {{ participant.getShortName() }}
+    <span *ngIf="participant.isAttending">
+      is coming!
+    </span>
+    <span *ngIf="!participant.isAttending">
+      is not coming!
+    </span>
   </div>
 
 
-  <div>
+  <div style="padding-top: 20px">
     <ion-list>
 
       <ion-list-header> Chat </ion-list-header>

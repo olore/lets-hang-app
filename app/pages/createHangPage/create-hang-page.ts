@@ -1,7 +1,7 @@
 import {Page} from 'ionic-angular';
 import {Contacts} from 'ionic-native';
 import {ViewController} from "ionic-angular/index";
-import {Output} from "angular2/core";
+import {Output} from "@angular/core";
 import * as moment from 'moment/moment';
 
 import {DateGrabber} from '../../components/date-grabber/date-grabber-component';

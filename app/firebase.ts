@@ -1,8 +1,7 @@
-import {Injectable} from "angular2/core";
-import {Provider} from "angular2/core";
+import {Injectable, Provider} from "@angular/core";
 
-import {FIREBASE_PROVIDERS} from "angularfire2/angularfire2";
-import {defaultFirebase} from "angularfire2/angularfire2";
+import {FIREBASE_PROVIDERS} from "angularfire2";
+import {defaultFirebase} from "angularfire2";
 
 @Injectable()
 export class FirebaseConfigWrapper {
