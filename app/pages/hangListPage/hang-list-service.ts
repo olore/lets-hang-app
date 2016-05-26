@@ -15,8 +15,9 @@ export class HangListService {
     this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');
   }
 
-  getAll() {
+  getAll() : Observable<Hang> {
     return Observable.create(observer => {
+
       let listener = this.db.on('child_added', snapshot => {
         let hang = this.createHangFromFirebase(snapshot);
         observer.next(hang);
