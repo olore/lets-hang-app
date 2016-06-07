@@ -1,5 +1,6 @@
 import * as moment from 'moment/moment';
 import {Person} from "./person-model";
+import {PersonStatus} from "./person-status-model";
 
 export class Hang {
   
@@ -9,7 +10,7 @@ export class Hang {
 
   constructor(
     public creator: Person,
-    public participants: Array<Person>,
+    public statuses: Array<PersonStatus>,
     public startDate: Date,
     public endDate: Date,
     public description: string,
@@ -22,13 +23,46 @@ export class Hang {
     - Probably need to do something about Participants
    */
   toFirebase() {
+    console.log('toFirebase', this.statuses);
+    var personStatuses = this.statuses.map((s) => {
+      console.log('s', s);
+      return s.toFirebase();
+    });
+
+    console.log('Hang - status toFirebase', personStatuses);
+
     return {
       creator: this.creator,
-      participants: this.participants,
+      statuses: personStatuses,
       startDate: moment(this.startDate).format(),
       endDate: moment(this.endDate).format(),
       description: this.description,
       location: this.location
     }
+  }
+
+  static fromFirebase<Hang>(snapshot) {
+    let data = snapshot.val();
+    console.log('Person fromFirebase 2', data);
+    let creator = Person.fromFirebase(data.creator);
+
+    if (!data.statuses ) {
+      data.statuses = [];
+    }
+    let statuses = data.statuses.map((status) => {
+      return PersonStatus.fromFirebase(status)
+    });
+
+    let hang = new Hang(
+      creator,
+      statuses,
+      moment(data.startDate).toDate(),
+      moment(data.endDate).toDate(),
+      data.description,
+      data.location
+    );
+    hang.key = snapshot.key();
+    return hang;
+
   }
 }

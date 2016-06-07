@@ -10,13 +10,13 @@
       <div>
         <div>
           <ion-icon primary (tap)="pickContact()" style="font-size: 40px;" name="person-add"></ion-icon>
-          <span *ngFor="let contact of whoArray">
+          <span *ngFor="let status of whoArray">
 
-            <ion-avatar *ngIf="contact.photoUrl" style="display: inline">
-              <img style="height: 40px; display: inline" [src]="contact.photoUrl">
+            <ion-avatar *ngIf="status.person.photoUrl" style="display: inline">
+              <img style="height: 40px; display: inline" [src]="status.person.photoUrl">
             </ion-avatar>
-            <span *ngIf="!contact.photoUrl" style="font-size: 40px;">
-              {{ contact.getInitials() }}
+            <span *ngIf="!status.person.photoUrl" style="font-size: 40px;">
+              {{ status.person.getInitials() }}
             </span>
           </span>
         </div>

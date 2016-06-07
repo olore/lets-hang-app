@@ -12,12 +12,12 @@
   <p>Length: {{ diff }} hour(s)</p>
 
   <h3>Who's coming?</h3>
-  <div *ngFor="let participant of hang.participants">
-    {{ participant.getShortName() }}
-    <span *ngIf="participant.isAttending">
+  <div *ngFor="let status of hang.statuses">
+    {{ status.person.getShortName() }}
+    <span *ngIf="status.accepted">
       is coming!
     </span>
-    <span *ngIf="!participant.isAttending">
+    <span *ngIf="status.declined">
       is not coming!
     </span>
   </div>

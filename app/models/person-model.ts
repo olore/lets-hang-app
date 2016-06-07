@@ -3,10 +3,22 @@ export class Person {
   public parent: Person;
   public photoUrl: string;
   public friends: Array<Person> = [];
+  public key;
 
   constructor(
     public firstName: String,
     public lastName: String) {
+  }
+
+  toFirebase() {
+    return {
+      firstName: this.firstName,
+      lastName: this.lastName
+    }
+  }
+
+  static fromFirebase<Person>(data) {
+    return new Person(data.firstName, data.lastName);
   }
 
   // For now ... eventually compare firebase ids ?

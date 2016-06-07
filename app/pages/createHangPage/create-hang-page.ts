@@ -9,6 +9,7 @@ import {CreateHangService} from "./create-hang-service";
 import {Person} from "../../models/person-model";
 import {Hang} from "../../models/hang-model";
 import {MeService} from "../../services/me-service";
+import {PersonStatus} from "../../models/person-status-model";
 
 @Page({
   templateUrl: 'build/pages/createHangPage/create-hang-page.html',
@@ -43,13 +44,17 @@ export class CreateHangPage {
         let person = new Person(contact.name.givenName, contact.name.familyName);
         person.photoUrl = contact.photos && contact.photos[0].value;
         this.me.addFriend(person);
-        this.whoArray.push(person);
+        let ps = new PersonStatus();
+        ps.person = person;
+        this.whoArray.push(ps);
       })
       .catch((err) => {
         if (err === 'cordova_not_available') {
           let person = new Person('TestUser', 'One');
-          this.whoArray.push(person);
+          let ps = new PersonStatus();
+          ps.person = person;
           this.me.addFriend(person);
+          this.whoArray.push(ps);
         } else {
           console.log(JSON.stringify(err));
         }
