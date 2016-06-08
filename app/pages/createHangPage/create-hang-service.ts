@@ -13,7 +13,6 @@ export class CreateHangService {
 
   save(hang: Hang) {
     return new Promise((resolve) => {
-      console.log('pushing ', hang);
 
       const hangs = this.af.database.list('/hangs');
       hangs.push(hang.toFirebase());

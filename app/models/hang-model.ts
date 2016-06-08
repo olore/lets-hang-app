@@ -23,13 +23,9 @@ export class Hang {
     - Probably need to do something about Participants
    */
   toFirebase() {
-    console.log('toFirebase', this.statuses);
     var personStatuses = this.statuses.map((s) => {
-      console.log('s', s);
       return s.toFirebase();
     });
-
-    console.log('Hang - status toFirebase', personStatuses);
 
     return {
       creator: this.creator,
@@ -43,7 +39,6 @@ export class Hang {
 
   static fromFirebase<Hang>(snapshot) {
     let data = snapshot.val();
-    console.log('Person fromFirebase 2', data);
     let creator = Person.fromFirebase(data.creator);
 
     if (!data.statuses ) {

@@ -39,7 +39,7 @@ export class CreateHangPage {
 
         // hack to allow me to stringify
         delete contact.birthday;
-        console.log(JSON.stringify(contact));
+        //console.log(JSON.stringify(contact));
 
         let person = new Person(contact.name.givenName, contact.name.familyName);
         person.photoUrl = contact.photos && contact.photos[0].value;

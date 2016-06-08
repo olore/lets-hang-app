@@ -36,7 +36,6 @@ export class HangListPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log('subscribing');
     this.subscription = this.hangListService.getAll()
       .subscribe(hang => {
         this.isLoading = false;
@@ -50,7 +49,6 @@ export class HangListPage implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('unsubscribing');
     this.subscription.unsubscribe();
   }
 

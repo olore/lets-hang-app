@@ -16,12 +16,9 @@ export class PersonStatus {
 
   static fromFirebase<PersonStatus>(data) {
     let ps = new PersonStatus();
-    console.log('PersonStatus fromFirebase', data);
     ps.person = Person.fromFirebase(data.person);
-    console.log('PersonStatus - Person fromFirebase', ps.person);
     ps.accepted = data.accepted || false;
     ps.declined = data.declined || false;
-    console.log('PersonStatus fromFirebase', ps);
     return ps;
   }
 }
