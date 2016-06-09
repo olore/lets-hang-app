@@ -4,11 +4,29 @@
 
 <ion-content class="hang-view-page">
 
-  <h3>{{ hang.description }}</h3>
-  <p>{{ hang.location }}</p>
-  <p>Created by {{ hang.creator.getShortName() }}</p>
+
+  <div class="date-wrapper" style="text-align: center;">
+    <div>April</div>
+    <span style="">25</span>
+    <ion-icon name="calendar-outline"></ion-icon>
+    <div>3pm - 7pm</div>
+  </div>
+
+  <h3>
+    <span class="with">what</span> {{ hang.description }}
+  </h3>
+  <h3>
+    <span class="with">where</span> {{ hang.location }}
+  </h3>
+  <h3>
+    <span class="with">when</span> {{ formattedStartDate }}
+  </h3>
+
+  <h3>
+    Created by {{ hang.creator.getShortName() }}
+  </h3>
+
   <p>Start: {{ hang.startDate }}</p>
-  <p>End: {{ hang.endDate }}</p>
   <p>Length: {{ diff }} hour(s)</p>
 
   <h3>Who's coming?</h3>

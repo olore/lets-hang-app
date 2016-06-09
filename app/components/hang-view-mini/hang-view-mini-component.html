@@ -11,7 +11,7 @@
     <ion-icon *ngIf="!hang.approved" style="color: darkgray" name="close-circle"></ion-icon>
   </div>
 
-  <div (tap)="showHang()" >
+  <div style="z-index: 1000;" (tap)="showHang()" >
     <h3>
       <span class="with">what</span> {{ hang.description }}
     </h3>

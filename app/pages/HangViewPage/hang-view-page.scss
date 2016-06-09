@@ -1,4 +1,4 @@
-.create-hang-page {
+.hang-view-page {
 
   ion-input {
     input {
@@ -6,7 +6,25 @@
     }
   }
 
-  //ion-item {
-  //  padding-left: 0;
-  //}
+  .date-wrapper {
+    text-align: center;
+    ion-icon {
+      font-size: 5em;
+      color: royalblue;
+    }
+
+    span {
+      position: absolute;
+      font-family: monospace;
+      font-size: 4em;
+      top: .9em;
+    }
+
+    div {
+      text-align: center;
+      font-size: 1.5em;
+    }
+
+  }
+
 }

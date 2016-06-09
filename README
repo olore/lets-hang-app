@@ -11,6 +11,32 @@ ionic emulate -l -c --target='iPhone-5s, 8.4' --debug ios # Live reload & conslo
 
 Generating icons: http://ionicframework.com/docs/cli/icon-splashscreen.html
 
+
+Running offline
+===============
+https://github.com/urish/firebase-server
+Note: changes are not persisted when restarting of the firebase-server
+
+# Add localhost.firebaseio.test to /etc/hosts
+# Run local server:
+  `node firebase-server.js`
+or with debug
+  `node firebase-server.js`
+
+# Change
+  `this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');`
+to
+  `this.db = new Firebase('ws://localhost.firebaseio.test:5555/hangs');`
+
+And
+  `private static url = 'https://sizzling-inferno-1088.firebaseio.com/';`
+to
+  `private static url = 'ws://localhost.firebaseio.test:5555/';`
+
+
+Troubleshooting:
+===============
+
 typings install firebase --ambient --save
 will fix these errors:
 TypeScript error: /Users/brian/dev/lets-hang-app/node_modules/angularfire2/database/database.d.ts(8,29): Error TS2304: Cannot find name 'Firebase'.

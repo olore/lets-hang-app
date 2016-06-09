@@ -12,7 +12,8 @@ export class HangListService {
   db: Firebase;
 
   constructor(public af: AngularFire) {
-    this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');
+    //this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');
+    this.db = new Firebase('ws://localhost.firebaseio.test:5555/hangs');
   }
 
   getAll() {
