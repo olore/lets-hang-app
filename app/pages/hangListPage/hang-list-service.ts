@@ -5,15 +5,16 @@ import {Hang} from "./../../models/hang-model";
 import {Observable} from "rxjs/Observable";
 
 import {AngularFire} from "angularfire2";
+import {FirebaseConfigWrapper} from "../../firebase";
 
 @Injectable()
 export class HangListService {
 
   db: Firebase;
 
-  constructor(public af: AngularFire) {
-    //this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');
-    this.db = new Firebase('ws://localhost.firebaseio.test:5555/hangs');
+  constructor() {
+    //FIXME why am I using Firebase & not angularfire2 here?
+    this.db = new Firebase(FirebaseConfigWrapper.getWSUrl() + '/hangs');
   }
 
   getAll() {

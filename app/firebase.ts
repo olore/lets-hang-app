@@ -6,13 +6,28 @@ import {defaultFirebase} from "angularfire2";
 @Injectable()
 export class FirebaseConfigWrapper {
 
-  //private static url = 'https://sizzling-inferno-1088.firebaseio.com/';
-  private static url = 'ws://localhost.firebaseio.test:5555/';
+  //static host: string = 'sizzling-inferno-1088.firebaseio.com/';
+  static host: string = 'localhost.firebaseio.test:5555/';
+
+  static getWSUrl() {
+    if (FirebaseConfigWrapper.host.includes('localhost')) {
+      return 'ws://' + FirebaseConfigWrapper.host
+    } else {
+      return 'https://' + FirebaseConfigWrapper.host
+    }
+  }
+  static getHttpUrl() {
+    if (FirebaseConfigWrapper.host.includes('localhost')) {
+      return 'http://' + FirebaseConfigWrapper.host
+    } else {
+      return 'https://' + FirebaseConfigWrapper.host
+    }
+  }
 
   static getProviders() {
     return [
       FIREBASE_PROVIDERS,
-      defaultFirebase(this.url)
+      defaultFirebase(FirebaseConfigWrapper.getHttpUrl())
     ];
   }
 }

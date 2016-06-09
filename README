@@ -21,17 +21,11 @@ Note: changes are not persisted when restarting of the firebase-server
 # Run local server:
   `node firebase-server.js`
 or with debug
-  `node firebase-server.js`
+  `DEBUG=* node firebase-server.js`
 
-# Change
-  `this.db = new Firebase('https://sizzling-inferno-1088.firebaseio.com/hangs');`
-to
-  `this.db = new Firebase('ws://localhost.firebaseio.test:5555/hangs');`
-
-And
-  `private static url = 'https://sizzling-inferno-1088.firebaseio.com/';`
-to
-  `private static url = 'ws://localhost.firebaseio.test:5555/';`
+# Change in firebase.ts
+  //static host: string = 'sizzling-inferno-1088.firebaseio.com/';
+  static host: string = 'localhost.firebaseio.test:5555/';
 
 
 Troubleshooting:
