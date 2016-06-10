@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
-import {Hang} from "../../models/hang-model";
-import {HangListService}  from '../hangListPage/hang-list-service'; //TODO: Remove this hack
+import {Hang} from "../models/hang-model";
+import {HangListService}  from '../pages/hangListPage/hang-list-service'; //TODO: Remove this hack
 import {AngularFire} from 'angularfire2';
 
 @Injectable()

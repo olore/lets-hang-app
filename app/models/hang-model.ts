@@ -6,7 +6,8 @@ export class Hang {
   
   public approved: boolean = false;
   public accepted: boolean = false;
-  public key: String;
+  public rejected: boolean = false;
+  public key: string;
 
   constructor(
     public creator: Person,
@@ -57,6 +58,8 @@ export class Hang {
       data.location
     );
     hang.key = snapshot.key();
+    hang.accepted = data.accepted;
+    hang.approved = data.approved;
     return hang;
 
   }

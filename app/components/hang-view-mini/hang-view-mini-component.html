@@ -3,7 +3,8 @@
   <!-- Look at http://ionicframework.com/docs/v2/components/#sliding-list  -->
   <ion-avatar item-left>
     <ion-icon *ngIf="hang.accepted" style="color: darkgreen" name="thumbs-up" (tap)="toggleAccepted()"></ion-icon>
-    <ion-icon *ngIf="!hang.accepted" style="color: darkgray" name="thumbs-down" (tap)="toggleAccepted()"></ion-icon>
+    <ion-icon *ngIf="hang.declined" style="color: darkgray" name="thumbs-down" (tap)="toggleAccepted()"></ion-icon>
+    <ion-icon *ngIf="!hang.accepted && !hang.declined" style="color: darkgray" name="question" (tap)="toggleAccepted()">????</ion-icon>
   </ion-avatar>
 
   <div item-right>

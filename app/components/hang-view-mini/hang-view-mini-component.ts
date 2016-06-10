@@ -6,9 +6,11 @@ import {Person} from "../../models/person-model";
 import {MeService} from "../../services/me-service";
 import {PersonStatus} from "../../models/person-status-model";
 import {Hang} from "../../models/hang-model";
+import {HangService} from "../../services/hang-service";
 
 @Component({
   selector: 'hang-view-mini',
+  providers: [HangService],
   templateUrl: 'build/components/hang-view-mini/hang-view-mini-component.html'
 })
 
@@ -23,6 +25,7 @@ export class HangViewMini implements OnInit {
 
   constructor(
     public nav: NavController,
+    public hangService: HangService,
     meService: MeService) {
 
     this.me = meService.getMe();
@@ -39,6 +42,7 @@ export class HangViewMini implements OnInit {
 
   toggleAccepted() {
     this.hang.accepted = !this.hang.accepted;
+    this.hangService.save(this.hang);
   }
 
   formatDate(date) {

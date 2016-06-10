@@ -5,7 +5,7 @@ import {Output} from "@angular/core";
 import * as moment from 'moment/moment';
 
 import {DateGrabber} from '../../components/date-grabber/date-grabber-component';
-import {CreateHangService} from "./create-hang-service";
+import {CreateHangService} from "./../../services/create-hang-service";
 import {Person} from "../../models/person-model";
 import {Hang} from "../../models/hang-model";
 import {MeService} from "../../services/me-service";
