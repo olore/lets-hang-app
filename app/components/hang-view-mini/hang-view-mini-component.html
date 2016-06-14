@@ -1,10 +1,14 @@
 <ion-item>
 
   <!-- Look at http://ionicframework.com/docs/v2/components/#sliding-list  -->
-  <ion-avatar item-left>
-    <ion-icon *ngIf="hang.accepted" style="color: darkgreen" name="thumbs-up" (tap)="toggleAccepted()"></ion-icon>
-    <ion-icon *ngIf="hang.declined" style="color: darkgray" name="thumbs-down" (tap)="toggleAccepted()"></ion-icon>
-    <ion-icon *ngIf="!hang.accepted && !hang.declined" style="color: darkgray" name="question" (tap)="toggleAccepted()">????</ion-icon>
+  <ion-avatar item-left *ngIf="hang.isOwnedBy(me)">
+    <ion-icon style="color: darkgreen" name="thumbs-up"></ion-icon>
+  </ion-avatar>
+  
+  <ion-avatar item-left *ngIf="!hang.isOwnedBy(me)">
+    <ion-icon *ngIf="hang.isAcceptedBy(me)" style="color: darkgreen" name="thumbs-up" (tap)="toggleStatus()"></ion-icon>
+    <ion-icon *ngIf="hang.isDeclinedBy(me)" style="color: darkgray" name="thumbs-down" (tap)="toggleStatus()"></ion-icon>
+    <ion-icon *ngIf="!hang.isAcceptedBy(me) && !hang.isDeclinedBy(me)" style="color: darkgray" name="question" (tap)="toggleStatus()">??</ion-icon>
   </ion-avatar>
 
   <div item-right>

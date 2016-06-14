@@ -8,7 +8,7 @@ new FirebaseServer(5555, 'localhost.firebaseio.test', {
       "approved": true,
       "creator": {
         "firstName": "Bill",
-        "lastName": "Smith",
+        "lastName": "Smith"
       },
       "description": "Bill's hangout",
       "location": "Bill's house",
@@ -33,11 +33,7 @@ new FirebaseServer(5555, 'localhost.firebaseio.test', {
       "approved": true,
       "creator": {
         "firstName": "Brian",
-        "lastName": "Olore",
-        "friends": {
-          "0": {"firstName": "TestUser", "lastName": "One"},
-          "1": {"firstName": "TestUser", "lastName": "One"}
-        }
+        "lastName": "Olore"
       },
       "description": "[Test data] My big party",
       "location": "200 North Street",

@@ -5,7 +5,6 @@ import {PersonStatus} from "./person-status-model";
 export class Hang {
   
   public approved: boolean = false;
-  public accepted: boolean = false;
   public rejected: boolean = false;
   public key: string;
 
@@ -16,6 +15,30 @@ export class Hang {
     public endDate: Date,
     public description: string,
     public location: string) {
+  }
+
+  getStatusFor(person: Person) {
+    return this.statuses.find((personStatus) => {
+      return personStatus.person.equals(person);
+    });
+  }
+
+  isOwnedBy(person: Person) {
+    return person.equals(this.creator);
+  }
+
+  isAcceptedBy(person: Person) {
+    var found = this.statuses.find((personStatus) => {
+      return personStatus.person.equals(person);
+    });
+    return found && found.accepted;
+  }
+
+  isDeclinedBy(person: Person) {
+    var found = this.statuses.find((personStatus) => {
+      return personStatus.person.equals(person);
+    });
+    return found && found.declined;
   }
 
   /*

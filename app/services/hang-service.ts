@@ -17,10 +17,10 @@ export class HangService {
   }
 
   save(hang: Hang) {
-    console.log('saving: ', hang);
+    console.log('saving: ', hang.toFirebase());
 
     this.db = new Firebase(FirebaseConfigWrapper.getWSUrl() + '/hangs/' + hang.key);
-    return this.db.update(hang);
+    return this.db.update(hang.toFirebase());
 
     //var updates = {};
     //updates['/posts/' + newPostKey] = postData;

@@ -40,8 +40,22 @@ export class HangViewMini implements OnInit {
     this.nav.push(HangViewPage, {hang: this.hang});
   }
 
-  toggleAccepted() {
-    this.hang.accepted = !this.hang.accepted;
+  /*
+    Accepted -> Declined -> Undecided -> Accepted
+   */
+  toggleStatus() {
+    let currentStatus = this.hang.getStatusFor(this.me);
+
+    if (currentStatus.accepted) {
+      currentStatus.accepted = false;
+      currentStatus.declined = true;
+    } else if (currentStatus.declined) {
+      delete currentStatus.approved;
+      delete currentStatus.declined;
+    } else {
+      currentStatus.accepted = true;
+      currentStatus.declined = false;
+    }
     this.hangService.save(this.hang);
   }
 
@@ -51,10 +65,7 @@ export class HangViewMini implements OnInit {
 
   // TODO replace this with a component that does initials/picture
   formatParticipants(statuses: Array<PersonStatus>) {
-    var x = statuses.map((status) => {
-      return status.person.getShortName();
-    });
-    return x.join(', ');
+    return statuses.map(status => status.person.getShortName()).join(', ');
   }
 
 }
