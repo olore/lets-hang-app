@@ -53,6 +53,7 @@ export class CreateHangPage {
           let person = new Person('TestUser', 'One');
           let ps = new PersonStatus();
           ps.person = person;
+          ps.accepted = true;
           this.me.addFriend(person);
           this.whoArray.push(ps);
         } else {
@@ -67,7 +68,6 @@ export class CreateHangPage {
     let hang = new Hang(this.me, this.whoArray,
                         this.startDate, endDate,
                         this.description, this.location);
-    hang.accepted = true;
     this.createHangService.save(hang)
       .then(() => {
         this.viewCtrl.dismiss();

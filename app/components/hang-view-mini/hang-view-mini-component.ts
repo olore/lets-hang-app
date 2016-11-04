@@ -32,6 +32,7 @@ export class HangViewMini implements OnInit {
   }
 
   ngOnInit() {
+    console.log('hangViewMini init');
     this.formattedStartDate = this.formatDate(this.hang.startDate);
     this.formattedParticipants = this.formatParticipants(this.hang.statuses);
   }
@@ -50,7 +51,7 @@ export class HangViewMini implements OnInit {
       currentStatus.accepted = false;
       currentStatus.declined = true;
     } else if (currentStatus.declined) {
-      delete currentStatus.approved;
+      delete currentStatus.accepted;
       delete currentStatus.declined;
     } else {
       currentStatus.accepted = true;

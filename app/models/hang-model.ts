@@ -62,7 +62,7 @@ export class Hang {
   }
 
   static fromFirebase<Hang>(snapshot) {
-    let data = snapshot.val();
+    let data = snapshot; //.val();
     let creator = Person.fromFirebase(data.creator);
 
     if (!data.statuses ) {
@@ -80,9 +80,9 @@ export class Hang {
       data.description,
       data.location
     );
-    hang.key = snapshot.key();
-    hang.accepted = data.accepted;
+    hang.key = snapshot['$key']; //.key();
     hang.approved = data.approved;
+    hang.rejected = data.rejected;
     return hang;
 
   }

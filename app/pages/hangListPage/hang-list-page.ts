@@ -10,6 +10,9 @@ import {Hang} from "../../models/hang-model";
 
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
+import 'rxjs/add/operator/map';
+
+//import {} from "rxjs/operator/map";
 
 @Page({
   templateUrl: 'build/pages/hangListPage/hang-list-page.html',
@@ -21,8 +24,8 @@ export class HangListPage implements OnInit {
   me: Person;
   isLoading: boolean;
   modal: Modal;
-  upcomingHangs: Hang[] = [];
-  incomingHangs: Hang[] = [];
+  upcomingHangs; //: Observable<Hang>;
+  incomingHangs: any; //Observable<Hang>;
   subscription: Subscription;
 
   // Note: constructor is called on every access of the page
@@ -36,16 +39,37 @@ export class HangListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.subscription = this.hangListService.getAll()
-      .subscribe(hang => {
-        this.isLoading = false;
-        if (hang.creator.equals(this.me)) {
-          this.upcomingHangs.push(hang);
-        } else {
-          this.incomingHangs.push(hang);
-        }
+    //this.heroes = this._heroService.getHeroes()
+    //  .subscribe(heroes => this.heroes = heroes);
 
+    this.incomingHangs = this.hangListService.getAll();
+
+    this.incomingHangs
+      .map((hang) => {
+        console.log('hang', hang);
+        return hang;
+      })
+      .subscribe(hangs => {
+        console.log('hangs', hangs);
+        this.isLoading = false
       });
+
+    //this.incomingHangs = this.hangListService.getAll()
+    //  .subscribe(() => this.isLoading = false);
+
+      //.map(hang => {
+      //  console.log('hang', typeof hang);
+      //  console.log('hang', hang);
+      //  if (hang.creator.equals(this.me)) {
+      //    Observable.from(hang);
+      //  } else {
+      //    this.incomingHangs.push(hang);
+      //  }
+      //})
+
+     //this.incomingHangs.subscribe(() => {
+     //  this.isLoading = false;
+     //});
   }
 
   ngOnDestroy() {
